@@ -1,0 +1,54 @@
+{% load my_filter %}  {# the name of the file #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav>
+    <a href="{% url 'index' %}">{% url 'index' %}</a>
+
+    <a href="{% url 'redirect to home' %}">{% url 'redirect to home' %}</a>
+</nav>
+<div>
+    Original: {{ values }}
+</div>
+<div>
+    Odd: {{ values|odd }} {# `odd` is the name of the filter #}
+</div>
+<h1>
+    {{ title }}: {{ value }}
+</h1>
+<h1>
+    {{ title|upper }}: {{ value }}
+
+</h1>
+<h1>
+    {{ title|capfirst }}: {{ value }}
+
+</h1>
+{{ info.address }}
+{{ student.get_info }}
+{{ student_info }}
+<h2>{{ now }}</h2>
+<h2>{{ now|date:'d/m/Y H/' }}</h2>
+<h2>{{ now|app_style}}</h2>
+
+<div>
+    {% if students %}
+        {{ students|join:', ' }}
+    {% else %}
+        No students
+    {% endif %}
+    <ul>
+        {% for student in students %}
+            <li>{{ student }}</li>
+        {% empty %}
+            No students
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
